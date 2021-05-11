@@ -24,3 +24,14 @@ esvdf
 wafsd
 """
 print(multiline_str)
+
+
+grade = 7
+if grade > 5:
+    passed = True
+else:
+    passed = False
+
+passed = True if grade > 5 else False  # ternary operator
+
+passed = grade > 5
