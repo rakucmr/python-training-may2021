@@ -26,6 +26,7 @@ else:
 # multiples of five print "Buzz". For numbers which are multiples of both three
 # and five print "FizzBuzz". If the number 30 is encountered, break the loop.
 
+
 for i in range(1, 50):
     if i == 30:
         break
