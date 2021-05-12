@@ -10,5 +10,6 @@ def f(name: str, age: int) -> str:
     return f'{name} is {age} years old.'
 
 
-message = f('Ana', 20)
-print(message)
+if __name__ == '__main__':
+    message = f('Ana', 20)
+    print(message)
