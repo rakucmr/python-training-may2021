@@ -1,4 +1,5 @@
 import functools
+from time import time, sleep
 
 
 def make_pretty(func):
@@ -25,12 +26,41 @@ def add(a, b):
     return a + b
 
 
-ordinary()
-greet('Ana')
-result = add(10, 20)
-print('Result', result)
+def running_time(function):
+    def inner(*params, **kwargs):
+        start_time = time()
+        ret = function(*params, **kwargs)
+        print("Run time:", time() - start_time)
+        return ret
+    return inner
 
-# ordinary = make_pretty(ordinary)  # decoration
-# ordinary()
-# make_pretty(ordinary)()
-# make_pretty.<locals>.inner()
+
+@running_time
+def filter_short_words(word_list, max_length):
+    sleep(2)  # mock a slow function
+    return filter(lambda word: len(word) < max_length, word_list)
+
+
+# filter_short_words = running_time(filter_short_words)
+
+
+@running_time
+def sort_words(*words):
+    return sorted(set(words), key=words.count, reverse=True)
+
+
+if __name__ == '__main__':
+    ordinary()
+    greet('Ana')
+    result = add(10, 20)
+    print('Result', result)
+
+    # ordinary = make_pretty(ordinary)  # decoration
+    # ordinary()
+    # make_pretty(ordinary)()
+    # make_pretty.<locals>.inner()
+
+    word_list = ["aaa", "bbbbb", "ccccccc", "ddddd"]
+    print(list(filter_short_words(word_list, max_length=4)))
+
+    print(sort_words("aaa", "aaa", "aaa", "bb", "bb", "bb", "bb", "c"))
