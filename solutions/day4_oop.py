@@ -16,6 +16,27 @@ class BankAccount:
         self.balance -= amount
 
 
+class Employee:
+    ACCEPTED_RAISE_VALUES = (5, 10, 20)
+
+    def __init__(self, name: str, bank_account: BankAccount, salary: int = 0):
+        self.name = name
+        self.bank_account = bank_account
+        self._salary = salary
+
+    @property
+    def salary(self):
+        return self._salary
+
+    def raise_salary(self, percent):
+        if percent not in self.ACCEPTED_RAISE_VALUES:
+            raise ValueError(f'Invalid raise value: {percent}%')
+        self._salary += (percent / 100) * self._salary
+
+    def receive_salary(self):
+        self.bank_account.deposit(self._salary)
+
+
 if __name__ == '__main__':
     bank_acc = BankAccount('BRD', 100)  # create instance
     print('Initial balance:', bank_acc.balance)
@@ -28,3 +49,13 @@ if __name__ == '__main__':
     except InsufficientFundsException as ex:
         print(ex)
     print('Balance after trying to withdraw 100:', bank_acc.balance)
+
+    emp = Employee("John Doe", bank_acc, 1000)
+    emp.raise_salary(10)
+    print(emp.salary)  # should print 1100
+    emp.receive_salary()
+    print(emp.bank_account.balance)  # should print 1180 (80 before salary + salary)
+    try:
+        emp.salary = 2000  # should raise exception (can't set attribute)
+    except AttributeError as ex:
+        print(ex)

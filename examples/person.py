@@ -44,11 +44,23 @@ class Person:
         return self.name == other.name
 
 
+class Student(Person):
+    count = 0
+
+    def __init__(self, name, date_of_birth, university):
+        super().__init__(name, date_of_birth)
+        self.university = university
+
+    def salute(self, greeting):
+        # super().salute(greeting)
+        print(f'{greeting}! I am {self.name} and I study at {self.university}.')
+
+
 if __name__ == '__main__':
     print(Person.count)
     p = Person('Ana', date(1999, 2, 4))
     print(Person.count)
-    p2 = Person('Mihai', date(1984, 12, 23))
+    p2 = Person('Andrei', date(1984, 12, 23))
     print(p.name)
     print(p2.name)
 
@@ -72,3 +84,11 @@ if __name__ == '__main__':
     print(p.date_of_birth)
     p.date_of_birth = date(1990, 3, 5)
     print(f"{p.name}'s age:", p.age)
+
+    s = Student('Andrei', date(2000, 3, 23), 'Universitatea București')
+    s.salute('Hi')
+    print(s.age)
+    print(s == p2)
+
+    print(Person.count)
+    print(Student.count)
