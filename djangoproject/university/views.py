@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
@@ -8,7 +10,7 @@ from .forms import UniversityForm
 from .models import University
 
 
-class UniversityListView(ListView):
+class UniversityListView(LoginRequiredMixin, ListView):
     model = University
     context_object_name = 'universities'
 
@@ -38,6 +40,7 @@ def university_details(request, university_id):
 
 
 @require_http_methods(["GET", "POST"])
+@login_required
 def university_update(request, university_id):
     university = get_object_or_404(University, pk=university_id)
 
