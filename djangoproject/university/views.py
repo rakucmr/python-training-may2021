@@ -10,7 +10,7 @@ from .forms import UniversityForm
 from .models import University
 
 
-class UniversityListView(LoginRequiredMixin, ListView):
+class UniversityListView(ListView):
     model = University
     context_object_name = 'universities'
 
@@ -20,7 +20,7 @@ class UniversityDetailView(DetailView):
     context_object_name = 'university'
 
 
-class UniversityUpdate(UpdateView):
+class UniversityUpdateView(LoginRequiredMixin, UpdateView):
     model = University
     fields = ['name', 'city', 'description']
 

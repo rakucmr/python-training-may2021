@@ -10,7 +10,7 @@ urlpatterns = [
     path('', views.UniversityListView.as_view(), name='index'),
     path('<int:pk>/', views.UniversityDetailView.as_view(),
          name='university_details'),
-    path('<int:pk>/update/', views.UniversityUpdate.as_view(),
+    path('<int:pk>/update/', views.UniversityUpdateView.as_view(),
          name='university_update'),
     path('accounts/login/',
          auth_views.LoginView.as_view(template_name='university/login.html'),
