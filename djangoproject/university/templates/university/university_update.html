@@ -1,0 +1,12 @@
+{% extends 'university/base.html' %}
+
+{% block title %}Edit university {{ university.name }}{% endblock %}
+
+{% block content %}
+    <h4>{{ university }}</h4>
+    <form action="{% url 'university_update' university.id %}" method="post">
+        {% csrf_token %}
+        <textarea rows="10" cols="40" name="description">{{ university.description }}</textarea>
+        <input type="submit" value="Save">
+    </form>
+{% endblock %}

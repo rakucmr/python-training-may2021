@@ -8,6 +8,7 @@ class University(models.Model):
         ('clu', 'Cluj-Napoca'),
     ]
     name = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
     city = models.CharField(max_length=3, choices=CITY_CHOICES)
 
     class Meta:
