@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>University page</title>
+    </head>
+    <body>
+        <h4>{{ university }}</h4>
+        <ul>
+            {% for student in university.student_set.all %}
+                <li>{{ student }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
