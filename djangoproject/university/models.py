@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class University(models.Model):
@@ -8,6 +9,7 @@ class University(models.Model):
         ('clu', 'Cluj-Napoca'),
     ]
     name = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
     city = models.CharField(max_length=3, choices=CITY_CHOICES)
 
     class Meta:
@@ -15,6 +17,10 @@ class University(models.Model):
 
     def __str__(self):
         return f'{self.name} ({self.get_city_display()})'
+
+    def get_absolute_url(self):
+        return reverse('university_details', args=(self.pk, ))
+
 
 class Student(models.Model):
     university = models.ForeignKey(University, on_delete=models.CASCADE)
