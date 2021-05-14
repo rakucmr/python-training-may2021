@@ -6,4 +6,4 @@ from .models import University
 class UniversityForm(ModelForm):
     class Meta:
         model = University
-        fields = ['description']
+        fields = ['name', 'city', 'description']
