@@ -1,3 +1,7 @@
+### Unittest exercises
+
+1. Write a test case for `Employee.raise_salary()` method. Consider all representative cases.
+
 ### Django exercises
 1. [optional] Run the interactive Django shell (`python manage.py shell`) and play around with the ORM (create objects, query db).
 ```python

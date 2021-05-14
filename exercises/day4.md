@@ -49,7 +49,3 @@
    Remove the directories and the file.
 1. Write a generator function that yields all the file names with an extension from a directory.
    Give the path and the file extension as parameters. 
-
-### Unittest exercises
-
-1. Write a test case for `Employee.raise_salary()` method. Consider all representative cases.
