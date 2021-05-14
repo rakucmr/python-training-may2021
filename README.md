@@ -1,5 +1,15 @@
 # Python Training
 
+## Django project
+
+1. After cloning the project, `cd` into `djangoproject` and run the following commands in the terminal:
+    ```shell
+    pip install -r requirements.txt
+    python manage.py migrate
+    python manage.py createsuperuser
+    python manage.py runserver 
+    ```
+
 ## Project installation with PyCharm
 
 1. Clone the repository inside `PycharmProjects` directory:
